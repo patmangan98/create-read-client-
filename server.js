@@ -6,7 +6,7 @@ const db = require('./config/db')
 
 const PORT = 3000
 
-// const customerRoutes = require('./routes/customer-routes')
+const customerRoutes = require('./routes/customer-routes')
 
 mongoose.set('strictQuery', true)
 
@@ -18,6 +18,8 @@ mongoose.connect(db, {
 const app = express()
 
 app.use(express.json())
+
+app.use(customerRoutes)
 
 app.listen(PORT, () => {
 	console.log('listening on port ' + PORT)
