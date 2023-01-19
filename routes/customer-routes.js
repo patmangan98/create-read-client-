@@ -1,7 +1,7 @@
 const express = require('express')
 const Customer = require('../models/customer')
 
-const Character = require('../models/customer')
+// const Customerr = require('../models/customer')
 
 const router = express.Router()
 
@@ -11,15 +11,21 @@ router.get('/customers', (req, res, next) => {
         .then((customers) => {
             return customers.map((customer) => customer)
         })
-    .then((customers) => res.status(200).json({customers : customers}))
+    .then((customers) => res.status(200).json({ customers: customers }))
     .catch(next)
 })
 
-
+//show 
+router.get('/customers/:id', (req, res, next) => {
+	// req.params.id will be set based on the `:id` in the route
+	Customer.findById(req.params.id)
+		.then((customer) => res.status(200).json({ customer: customer }))
+		.catch(next)
+})
 
 //create
 router.post('/customers', (req, res, next) => {
-    Character.create(req.body.customer)
+    Customer.create(req.body.customer)
     .then((customer) => {
         res.status(201).json({customer : customer})
     })
