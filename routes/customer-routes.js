@@ -44,6 +44,15 @@ router.patch('/customers/:id', (req, res, next) => {
 		.catch(next)
 })
 
+router.delete('/customers/:id', (req, res, next) => {
+	Customer.findById(req.params.id)
+		.then((customer) => {
+			customer.deleteOne()
+		})
+		.then(() => res.sendStatus(204))
+		.catch(next)
+})
+
 
 
 module.exports = router
