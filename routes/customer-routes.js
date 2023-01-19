@@ -32,4 +32,18 @@ router.post('/customers', (req, res, next) => {
     .catch(next)
 })
 
+// UPDATE
+// PATCH /characters/5a7db6c74d55bc51bdf39793
+router.patch('/customers/:id', (req, res, next) => {
+
+	Customer.findById(req.params.id)
+		.then((customer) => {
+			return customer.updateOne(req.body.customer)
+		})
+		.then(() => res.sendStatus(204))
+		.catch(next)
+})
+
+
+
 module.exports = router
