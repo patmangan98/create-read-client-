@@ -9,6 +9,7 @@ const db = require('./config/db')
 const PORT = 3001
 
 const customerRoutes = require('./routes/customer-routes')
+const userRoutes = require('./routes/user-routes')
 
 mongoose.set('strictQuery', true)
 
@@ -24,6 +25,7 @@ app.use(cors({origin: 'http://127.0.0.1:5501'}))
 app.use(express.json())
 
 app.use(customerRoutes)
+app.use(userRoutes)
 
 app.listen(PORT, () => {
 	console.log('listening on port ' + PORT)
