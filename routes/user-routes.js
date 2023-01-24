@@ -10,9 +10,7 @@ router.post('/sign-up', (req, res, next) => {
       .hash(req.body.credentials.password, 10)
       // return a new object with the email and hashed password
       .then(hash =>
-        // when returning an object with fat arrow syntax, we
-        // need to wrap the object in parentheses so JS doesn't
-        // read the object curly braces as the function block
+
         ({
           email: req.body.credentials.email,
           password: hash

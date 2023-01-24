@@ -31,7 +31,7 @@ const strategy = new Strategy(opts, function (jwt_payload, done) {
 
 passport.use(strategy)
 
-// Initialize the passport middleware based on the above configuration
+
 passport.initialize()
 
 

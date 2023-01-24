@@ -1,6 +1,4 @@
-//URI String - uniform resource identifier a way to to distingush resources from one another 
 
-// creating a base name for mongodb
 const mongooseBaseName = 'create-read'
 
 

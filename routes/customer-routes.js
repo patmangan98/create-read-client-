@@ -1,7 +1,8 @@
 const express = require('express')
+const { requireToken } = require('../config/auth')
 const Customer = require('../models/customer')
 
-// const Customerr = require('../models/customer')
+
 
 const router = express.Router()
 
@@ -16,8 +17,8 @@ router.get('/customers', (req, res, next) => {
 })
 
 //show 
-router.get('/customers/:id', (req, res, next) => {
-	// req.params.id will be set based on the `:id` in the route
+router.get('/customers/:id',  (req, res, next) => {
+	
 	Customer.findById(req.params.id)
 		.then((customer) => res.status(200).json({ customer: customer }))
 		.catch(next)
@@ -33,8 +34,8 @@ router.post('/customers', (req, res, next) => {
 })
 
 // UPDATE
-// PATCH /characters/5a7db6c74d55bc51bdf39793
-router.patch('/customers/:id', (req, res, next) => {
+
+router.patch('/customers/:id',  (req, res, next) => {
 
 	Customer.findById(req.params.id)
 		.then((customer) => {

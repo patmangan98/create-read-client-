@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 
+
 const Schema = mongoose.Schema
+
+const printSchema = require('./print')
 
 const customerSchema = new Schema(
     {
@@ -20,11 +23,15 @@ const customerSchema = new Schema(
             type: String, 
             required: true, 
         },
+        
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
         },
-        prints: [printSchema]
+        prints: {
+            type: [printSchema.schema],
+            required: false 
+        }
 }) 
 
 const Customer = mongoose.model('Customer', customerSchema)

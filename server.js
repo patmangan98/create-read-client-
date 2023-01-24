@@ -10,6 +10,7 @@ const PORT = 3001
 
 const customerRoutes = require('./routes/customer-routes')
 const userRoutes = require('./routes/user-routes')
+const printRoutes = require('./routes/print-routes')
 
 mongoose.set('strictQuery', true)
 
@@ -26,7 +27,7 @@ app.use(express.json())
 
 app.use(customerRoutes)
 app.use(userRoutes)
-
+app.use(printRoutes)
 app.listen(PORT, () => {
 	console.log('listening on port ' + PORT)
 })
